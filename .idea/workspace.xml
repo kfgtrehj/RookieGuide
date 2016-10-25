@@ -100,6 +100,10 @@
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="false" />
+                <element signature="e#993#994#0" expanded="false" />
+                <element signature="e#1020#1021#0" expanded="false" />
+                <marker date="1477301667000" expanded="true" signature="346:589" placeholder="{...}" />
+                <marker date="1477301667000" expanded="true" signature="675:951" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -2199,6 +2203,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
+            <element signature="e#993#994#0" expanded="false" />
+            <element signature="e#1020#1021#0" expanded="false" />
+            <marker date="1477301667000" expanded="true" signature="346:589" placeholder="{...}" />
+            <marker date="1477301667000" expanded="true" signature="675:951" placeholder="{...}" />
           </folding>
         </state>
       </provider>
