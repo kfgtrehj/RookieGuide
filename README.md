@@ -9,7 +9,7 @@
 ```javascript
 allprojects {
 		repositories {
-      jcenter()
+        jcenter()
 			...
 			maven { url "https://jitpack.io" }
 		}
@@ -18,10 +18,13 @@ allprojects {
 在项目的build.gradle中添加依赖地址
 ```
 dependencies {
-    ...
+      ...
 	  compile 'com.github.kfgtrehj:RookieGuide:1.1'
 }
 ```
+
+## 演示图片
+![演示图片](demo.jpg)
 
 ## 使用方法
 ```java
