@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">RookieGuide</string>
+    <string name="button_name">OK</string>
+    <string name="text_name">this textView</string>
+    <string name="switch_name">switch</string>
+</resources>
