@@ -42,6 +42,7 @@ public class samples extends Activity{
                 .setTarget(this.mySwitch)
                 .setPositiveRes(R.mipmap.positive_button)
                 .addTipsView(rookieContextVLP)
+                .setPositiveMargin(200)
                 .show();
     }
 

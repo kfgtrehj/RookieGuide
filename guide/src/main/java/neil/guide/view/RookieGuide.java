@@ -41,6 +41,10 @@ public class RookieGuide extends RelativeLayout {
 
 
 
+    private int PositiveButtonMargin = 60;
+
+
+
     /**
      * 橡皮擦
      * */
@@ -242,7 +246,7 @@ public class RookieGuide extends RelativeLayout {
                         0,
                         0,
                         0,
-                        100);
+                        Utils.dpToPx(PositiveButtonMargin));
                 infoView.setLayoutParams(infoDialogParams);
                 infoView.postInvalidate();
 
@@ -254,6 +258,13 @@ public class RookieGuide extends RelativeLayout {
     }
 
 
+    public int getPositiveButtonMargin() {
+        return PositiveButtonMargin;
+    }
+
+    public void setPositiveButtonMargin(int positiveButtonMargin) {
+        PositiveButtonMargin = positiveButtonMargin;
+    }
 
     public int getPositiveButtonRes() {
         return positiveButtonRes;
@@ -309,6 +320,10 @@ public class RookieGuide extends RelativeLayout {
         public Builder setPositiveRes(int resId){
             rookieGuide.setPositiveButtonRes(resId);
             rookieGuide.addPositiveButton(resId);
+            return this;
+        }
+        public Builder setPositiveMargin(int margin){
+            rookieGuide.setPositiveButtonMargin(margin);
             return this;
         }
         public Builder addTipsView(RookieContextVLP ... rookieContextVLPs){
