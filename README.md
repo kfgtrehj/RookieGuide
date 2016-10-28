@@ -5,7 +5,7 @@
 高亮某一控件，并在该被高亮控件的旁边添加解释或其他内容。
 
 ## 使用Gradle添加依赖
-在整个工程的build.gradle中添加maven仓库地址
+在工程root目录build.gradle中添加maven仓库地址
 ```javascript
 allprojects {
 		repositories {
@@ -19,7 +19,7 @@ allprojects {
 ```
 dependencies {
     ...
-	  compile 'com.github.kfgtrehj:RookieGuide:1.0'
+	  compile 'com.github.kfgtrehj:RookieGuide:1.1'
 }
 ```
 
