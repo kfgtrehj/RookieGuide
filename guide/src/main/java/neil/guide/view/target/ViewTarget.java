@@ -45,4 +45,14 @@ public class ViewTarget implements Target{
         return view;
     }
 
+    @Override
+    public float getWidth() {
+        return view.getWidth();
+    }
+
+    @Override
+    public float getHeight() {
+        return view.getHeight();
+    }
+
 }

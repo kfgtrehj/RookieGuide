@@ -26,4 +26,7 @@ public interface Target {
      * @return
      */
     View getView();
+
+    float getWidth();
+    float getHeight();
 }

@@ -3,6 +3,7 @@ package neil.guide.view;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -185,37 +186,61 @@ public class RookieGuide extends RelativeLayout {
      *  内容区域
      *  拿到已擦除的点,根据点的位置放置tips ......
      * */
-    private void addTipsView(RookieContextVLP... rookieContextVLPs){
+    private void addTipsView(RookieContextVLP ... rookieContextVLPs){
 
+        //使用相对布局
         final AbsoluteLayout contextView = (AbsoluteLayout) LayoutInflater.from(getContext()).inflate(R.layout.rookie_content_view, null);
         int index = 0;
         for(RookieContextVLP rookieContextVLP : rookieContextVLPs){
 
+            //创建一张图片
             final ImageView imageView = new ImageView(getContext());
-            imageView.setImageResource(rookieContextVLP.getResourceId());
+            //把资源文件转换成BitMap
+            Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(), rookieContextVLP.getResourceId());
+            imageView.setImageBitmap(bitmap);
+            //获取图片高宽
+            int height = bitmap.getHeight();
+            int width= bitmap.getWidth();
+            //设置缩放
             imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             int[] location = new int[2];
-            location[0] = 0;
+            location[0] = viewTargets[index].getPoint().x;
             location[1] = viewTargets[index].getPoint().y;
-            System.out.println("当前View Y点---->"+location[1]);
-            RelativeLayout.LayoutParams imageParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            imageParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-            imageView.setLayoutParams(imageParams);
+
+            RelativeLayout.LayoutParams imageParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
 
-            AbsoluteLayout.LayoutParams params = new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,location[0],location[1]+contextView.getHeight());;
-         //   int id =  this.viewTargets[index].getView().getId();
+            int tagerWidth = (int) viewTargets[index].getWidth();
+            int tagerHeight = (int) viewTargets[index].getHeight();
+
+
+
+            AbsoluteLayout.LayoutParams params = new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT,0,0);
 
 
             if(rookieContextVLP.getViewGravity() == ViewGravity.TOP){
-                params = new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,location[0],location[1]- Utils.dpToPx(110));
+                params = new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT,0,location[1] - height- Utils.dpToPx(10));
+                imageParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+
 
             }else if(rookieContextVLP.getViewGravity() == ViewGravity.BOTTOM){
-                params = new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,location[0],location[1]+ Utils.dpToPx(60));
+                params = new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT,0,location[1] + tagerHeight + Utils.dpToPx(10)) ;
+                imageParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+
+            }else if(rookieContextVLP.getViewGravity() == ViewGravity.LEFT){
+                int offsetX =  location[0] - width - Utils.dpToPx(10);
+                int offsetY = location[1] + tagerHeight/2 - height/2;
+                params = new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT,offsetX ,  offsetY) ;
+//                imageParams.addRule(RelativeLayout.CENTER_VERTICAL);
+
+            }else if(rookieContextVLP.getViewGravity() == ViewGravity.RIGHT){
+                int offsetX =  location[0] + tagerWidth + Utils.dpToPx(10);
+                int offsetY = location[1] + tagerHeight/2 - height/2;
+                params = new AbsoluteLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT,offsetX  , offsetY) ;
             }
+            imageView.setLayoutParams(imageParams);
             contextView.addView(imageView,params);
-//            addView(contextView,params);
-            System.out.println("当前位置---->"+params.x + params.y);
+
             index ++ ;
         }
         addView(contextView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
