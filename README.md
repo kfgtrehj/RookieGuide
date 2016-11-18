@@ -4,6 +4,7 @@
 主要用作新新手引导。
 高亮某一控件，并在该被高亮控件的旁边添加解释或其他内容。
 
+
 ## 使用Gradle添加依赖
 在工程root目录build.gradle中添加maven仓库地址
 ```javascript
@@ -19,7 +20,7 @@ allprojects {
 ```
 dependencies {
       ...
-	  compile 'com.github.kfgtrehj:RookieGuide:1.1'
+	  compile 'com.github.kfgtrehj:RookieGuide:1.2'
 }
 ```
 
